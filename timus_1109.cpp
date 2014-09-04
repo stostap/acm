@@ -10,12 +10,14 @@
 
 using namespace std;
 
+const int MAXN = 1005;
+const int MAXVAL = 100000000;
 int n,m,k;
 
-int dist[1005];
-int g1[1005], g2[1005];
+int dist[MAXN];
+int g1[MAXN], g2[MAXN];
 
-vector<int> g[1005];
+vector<int> g[MAXN];
 
 bool bfs()
 {
@@ -30,7 +32,7 @@ bool bfs()
 			dist[i] = 0;
 		}
 		else
-			dist[i] = 100000000;
+			dist[i] = MAXVAL;
 	dist[0] = 100000000;
 	while (st < sf)
 	{
@@ -39,7 +41,7 @@ bool bfs()
 		{
 			for (int i = 0; i < g[v].size(); i++)
 			{
-				if (dist[g2[g[v][i]]] == 100000000)
+				if (dist[g2[g[v][i]]] == MAXVAL)
 				{
 					dist[g2[g[v][i]]] = dist[v] + 1;
 					q.push_back(g2[g[v][i]]);
@@ -48,7 +50,7 @@ bool bfs()
 			}
 		}
 	}
-	return dist[0] != 100000000;
+	return dist[0] != MAXVAL;
 }
 
 bool dfs(int v)
@@ -67,7 +69,7 @@ bool dfs(int v)
 				}
 			}
 		}
-		dist[v] = 100000000;
+		dist[v] = MAXVAL;
 		return false;
 	}
 	return true;
@@ -78,7 +80,7 @@ bool dfs(int v)
 int main(void)
 {
 	for (int i = 0; i < n + 1; i++)
-		dist[i] = 100000000;;
+		dist[i] = MAXVAL;
 	scanf("%d%d%d", &n, &m, &k);
 	for (int i = 0 ; i <k; i++)
 	{
