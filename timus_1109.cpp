@@ -33,7 +33,7 @@ bool bfs()
 		}
 		else
 			dist[i] = MAXVAL;
-	dist[0] = 100000000;
+	dist[0] = MAXVAL;
 	while (st < sf)
 	{
 		int v = q[st++];
